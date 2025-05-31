@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AstraVero</title>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--fheather icons-->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!--My style-->
+    <link rell="stylesheet" href="css/style.css" />
+    <style>
+      :root {
+        --primary: rgb(180, 1, 10);
+        --background: #000;
+      }
+      @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@300;600&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+        text-decoration: none;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "poppins", sans-serif;
+        background-color: var(--background);
+        color: #ffffff;
+      }
+      header {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-family: "Orbitron", sans-serif;
+        color: #fada00;
+        text-shadow: 0 0 8px #fada00;
+      }
+      header h1 {
+        font-weight: 700;
+        font-size: 3rem;
+        letter-spacing: 0.2em;
+      }
+      .showroom {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        width: 100%;
+        max-width: 1200px;
+      }
+      .car-card {
+        background: #121212;
+        border: 2px solid #790101;
+        border-radius: 15px;
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: 0 0 15px #790101;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+      }
+      .car-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px #790101, 0 0 50px #790101;
+      }
+      .car-image {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-bottom: 2px solid #790101;
+      }
+      .car-info {
+        padding: 1rem 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .car-model {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #790101;
+        margin-bottom: 0.3rem;
+        letter-spacing: 0.05em;
+      }
+      .car-specs {
+        font-size: 0.9rem;
+        color: #ccc;
+        margin-bottom: 0.8rem;
+        font-weight: 500;
+        line-height: 1.3;
+      }
+      .car-description {
+        font-size: 0.9rem;
+        color: #bbb;
+        flex-grow: 1;
+        font-style: italic;
+        margin-top: 0.5rem;
+      }
+      /* navbar */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.4rem 7%;
+        background-color: rgb(1, 1, 1, 0.8);
+        border-bottom: 1px solid #513c28;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+      }
+      .navbar .navbar-logo {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #fff;
+        font-style: italic;
+      }
+      .navbar .navbar-logo span {
+        color: var(--primary);
+      }
+      .navbar .navbar-nav a {
+        color: #fff;
+        display: inline-block;
+        font-size: 1.3rem;
+        margin: 0 1rem;
+      }
+
+      .navbar .navbar-nav a:hover {
+        color: var(--primary);
+      }
+
+      .navbar .navbar-nav a::after {
+        content: "";
+        display: block;
+        padding-block: 0.5rem;
+        border-bottom: 0.1rem solid var(--primary);
+        transform: scalex(0);
+        transition: 0.2s linear;
+      }
+      .navbar .navbar-nav a:hover::after {
+        transform: scalex(0.5);
+      }
+
+      .navbar .navbar-extra a {
+        color: #fff;
+        margin: 0 0.5rem;
+      }
+
+      .navbar .navbar-extra a:hover {
+        color: var(--primary);
+      }
+      #Hamburger-menu {
+        display: none;
+      }
+            #searchBox {
+    position: absolute; /* Adjust positioning as needed */
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+input[type="text"] {
+    width: 200px; /* Set appropriate width */
+}
+button {
+    margin-left: 5px; /* Spacing between input and button */
+}
+
+      /*hero Section*/
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background-image: url("img/lamborghini.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      .hero::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 30%;
+        bottom: 0;
+        background: linear-gradient(
+          0deg,
+          rgba(5, 4, 5, 1) 8%,
+          rgba(255, 255, 255, 0) 50%
+        );
+      }
+
+      .hero .content {
+        padding: 1.4rem 7%;
+        max-width: 60rem;
+      }
+
+      .hero .content h1 {
+        font-size: 5em;
+        color: #fff;
+        text-shadow: 1px 1px 3px rgb(255, 85, 193, 0.5);
+        line-height: 1.2;
+      }
+
+      .hero .content h1 span {
+        color: var(--primary);
+      }
+
+      .hero .content p {
+        font-size: 1.6rem;
+        margin-top: 1rem;
+        line-height: 1.4;
+        font-weight: 100;
+        text-shadow: 1px 1px 3px rgb(255, 85, 193, 0.5);
+      }
+
+      .hero .content .cta {
+        margin-top: 1rem;
+        display: inline-block;
+        padding: 1rem 3rem;
+        font-size: 1.4rem;
+        color: #fff;
+        background-color: var(--primary);
+        border-radius: 0.5rem;
+        box-shadow: 1px 1px 3px rgb(255, 85, 193);
+      }
+
+      /* about section */
+      .about {
+        padding: 8rem 7% 1.4rem;
+      }
+      .about h2 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 3rem;
+      }
+      .about h2 span {
+        color: var(--primary);
+      }
+      .about .row {
+        display: flex;
+      }
+      .about .row .about-video {
+        flex: 1 1 45rem;
+      }
+
+      .about .row .about-video video {
+        width: 100%;
+        height: 48%;
+      }
+      .about .row .content {
+        flex: 1 1 35rem;
+        padding: 0 1rem;
+      }
+      .about .row .content h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+      .about .row .content p {
+        margin-bottom: 0.8rem;
+        font-size: 1.4rem;
+        font-weight: 100;
+        line-height: 1.6;
+      }
+      /*merek */
+      .mobil h2 span {
+        color: var(--primary);
+      }
+      .mobil h2 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .mobil {
+        padding: 8rem 7% 1.4rem;
+      }
+      .mobil p {
+        text-align: center;
+        max-width: 30rem;
+        margin: auto;
+        font-weight: 100;
+        line-height: 1.6;
+      }
+      .mobil .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 5rem;
+        justify-content: center;
+      }
+      .mobil .row .produk-card {
+        text-align: center;
+        padding-bottom: 4rem;
+      }
+      .mobil .row .produk-card img {
+        border-radius: 20%;
+        width: 80%;
+      }
+      .mobil .row .produk-card .produk-card-tittle {
+        margin: 1rem auto 0.5rem;
+      }
+      /*FOOTER */
+      footer {
+        background-color: var(--primary);
+        text-align: center;
+        padding: 1rem 0;
+        margin-top: 3rem;
+      }
+
+      footer .socials {
+        padding: 1rem 0;
+      }
+      footer .socials a {
+        color: #fff;
+        margin: 1rem;
+      }
+      footer .socials a:hover
+      footer .links a:hover {
+        color: var(--background);
+      }
+      footer .links {
+        margin-bottom: 1.4rem;
+      }
+      footer .links a {
+        color: #fff;
+        padding: 0.7rem 1rem;
+      }
+      footer .credit {
+        font-size: 0.8rem;
+      }
+      footer .credit a {
+        color: var(--background);
+        font-weight: 700;
+      }
+      /*Queries */
+
+      /* Media Queries untuk Responsivitas */
+      @media (max-width: 768px) {
+        html {
+          font-size: 62.5%; /* Mengubah ukuran font untuk tablet */
+        }
+
+        #Hamburger-menu {
+          display: inline-block; /* Menampilkan menu hamburger */
+        }
+
+        .navbar .navbar-nav {
+          position: absolute;
+          top: 100%;
+          right: -100%;
+          background-color: #fff;
+          width: 30rem;
+          height: 100vh;
+          transition: 0.3s;
+        }
+
+        .navbar .navbar-nav.active {
+          right: 0; /* Menampilkan menu saat aktif */
+        }
+
+        .navbar .navbar-nav a {
+          color: var(--background);
+          display: block;
+          margin: 1.5rem;
+          padding: 0.5rem;
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 450px) {
+        html {
+          font-size: 55%; /* Mengubah ukuran font untuk mobile */
+        }
+
+        .hero .content h1 {
+          font-size: 3em; /* Mengurangi ukuran font untuk judul di mobile */
+        }
+
+        .hero .content p {
+          font-size: 1.4rem; /* Mengurangi ukuran font untuk paragraf di mobile */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--navbar star-->
+    <nav class="navbar">
+      <a href="index.html" class="navbar-logo">ASTRA<span>VERO</span></a>
+
+      <div class="navbar-nav">
+        <a href="beranda.html">Home</a>
+        <a href="Tentang Kami.html">Tentang Kami</a>
+        <a href="daftar mobil.html">Mobil</a>
+        <a href="contact.html">Kontak</a>
+      </div>
+
+      <div class="navbar-extra">
+        <a href="#" id="search"><i data-feather="search"></i></a>
+        <a href="#" id="Shopping-cart"><i data-feather="shopping-cart"></i></a>
+        <a href="#" id="Hamburger-menu"><i data-feather="menu"></i></a>
+      </div>
+      <div id="searchBox" style="display:none;">
+    <input type="text" id="searchInput" placeholder="Search...">
+    <button onclick="performSearch()">Go</button>
+</div>
+    </nav>
+    <!--navbar end-->
+
+    <!--Hero section Star-->
+    <section class="hero" id="home">
+      <main class="content">
+        <h1>Silakan Melihat <span>Mobil Impian Kamu</span></h1>
+        <p>Kecepatan Bukan Sekedar Angka ~ Ini Gaya Hidup</p>
+        <a href="daftar mobil.html" class="cta">Pesan Sekarang</a>
+      </main>
+    </section>
+    <!--Hero section End-->
+    <!--penjelasan star-->
+    <section class="showroom" aria-label="Lamborghini Car Models">
+      <article class="car-card" tabindex="0">
+        <img
+          src="mobil/aventador.jpg"
+          alt="Lamborghini Aventador Ultimae"
+          class="car-image"
+        />
+        <div class="car-info">
+          <h2 class="car-model">Aventador Ultimae</h2>
+          <p class="car-specs">V12, 780 HP, 0-100 km/h in 2.8s</p>
+          <p class="car-description">
+            The ultimate expression of the legendary Aventador series, combining
+            power and elegance.
+          </p>
+        </div>
+      </article>
+      <article class="car-card" tabindex="0">
+        <img
+          src="mobil/huracan.jpg"
+          alt="Lamborghini Huracan EVO"
+          class="car-image"
+        />
+        <div class="car-info">
+          <h2 class="car-model">Huracan EVO</h2>
+          <p class="car-specs">V10, 610 HP, 0-100 km/h in 3.1s</p>
+          <p class="car-description">
+            A perfect fusion of cutting-edge technology and breathtaking Italian
+            design.
+          </p>
+        </div>
+      </article>
+      <article class="car-card" tabindex="0">
+        <img
+          src="mobil/veneno01.jpg"
+          alt="Lamborghini Urus"
+          class="car-image"
+        />
+        <div class="car-info">
+          <h2 class="car-model">veneno</h2>
+          <p class="car-specs">V8 Twin-Turbo, 650 HP, 0-100 km/h in 3.6s</p>
+          <p class="car-description">
+            The fastest, most powerful SUV ever built, blending versatility and
+            racecar DNA.
+          </p>
+        </div>
+      </article>
+      <article class="car-card" tabindex="0">
+        <img
+          src="mobil/DIABLO.jpg"
+          alt="Lamborghini Countach LPI 800-4"
+          class="car-image"
+        />
+        <div class="car-info">
+          <h2 class="car-model">DIABLO</h2>
+          <p class="car-specs">V12 Hybrid, 814 HP, 0-100 km/h in 2.8s</p>
+          <p class="car-description">
+            A bold modern reinterpretation of the iconic Countach, built for
+            maximum excitement.
+          </p>
+        </div>
+      </article>
+    </section>
+    <!--penjesalan end-->
+    <!--Footer start-->
+    <footer>
+      <div class="social">
+        <a
+          href="https://www.instagram.com/lamborghinileicester?igsh=bWVmaTVoNjZpOXp0"
+          ><i data-feather="instagram"></i
+        ></a>
+        <a href="https://www.facebook.com/share/1AftnHvF2K/"
+          ><i data-feather="facebook"></i
+        ></a>
+        <a href="https://x.com/Lamborghini?t=l-8oGu0t_ztnnXwl1ojKnQ&s=09"
+          ><i data-feather="twitter"></i
+        ></a>
+      </div>
+      <div class="links">
+        <a href="index.html">home</a>
+        <a href="Tentang Kami.html">Tentang Kami</a>
+        <a href="daftar mobil.html">mobil</a>
+        <a href="contact.html">kontak</a>
+      </div>
+      <div class="credit">
+        <p>
+          Created by
+          <a
+            href="https://mph.com/autos/results/lamborghini/revuelto-60742/filter:location=Beverly%20Hills,%20CA,%20USA?gad_source=1&gad_campaignid=22585563722&gbraid=0AAAAA9iIFlNJR6nb3l5fXwC-5abiXsjdw&gclid=Cj0KCQjwxdXBBhDEARIsAAUkP6jsXccfMq2MFGKb65oG-eJ_EFfAbT7c8gQyIJmpoL_l1jOTbxEa6xsaAhU_EALw_wcB"
+            >SALAM SATU HOBY</a
+          >
+          | &copy; Makassar, MEI 2025
+        </p>
+      </div>
+    </footer>
+    <!--Footer end-->
+    <!--fheater icons-->
+    <script>
+      feather.replace();
+    </script>
+    <!--my javascript-->
+    <script src="js/script.js"></script>
+    </script>
+  </body>
+  <script>
+    // hamburger.onclick = () => {
+    // console.log("Hamburger clicked!"); // Debugging
+    // navbarNav.classList.toggle("active");
+    // };
+  </script>
+</html>

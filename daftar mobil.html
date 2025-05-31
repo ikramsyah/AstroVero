@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AstraVero</title>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--fheather icons-->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!--My style-->
+    <link rell="stylesheet" href="css/style.css" />
+    <style>
+      :root {
+        --primary: rgb(180, 1, 10);
+        --background: #000;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+        text-decoration: none;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "poppins", sans-serif;
+        background-color: var(--background);
+        color: #ffffff;
+      }
+      /* navbar */
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.4rem 7%;
+        background-color: rgb(1, 1, 1, 0.8);
+        border-bottom: 1px solid #640404;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+      }
+      .navbar .navbar-logo {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #fff;
+        font-style: italic;
+      }
+      .navbar .navbar-logo span {
+        color: var(--primary);
+      }
+      .navbar .navbar-nav a {
+        color: #fff;
+        display: inline-block;
+        font-size: 1.3rem;
+        margin: 0 1rem;
+      }
+
+      .navbar .navbar-nav a:hover {
+        color: var(--primary);
+      }
+
+      .navbar .navbar-nav a::after {
+        content: "";
+        display: block;
+        padding-block: 0.5rem;
+        border-bottom: 0.1rem solid var(--primary);
+        transform: scalex(0);
+        transition: 0.2s linear;
+      }
+      .navbar .navbar-nav a:hover::after {
+        transform: scalex(0.5);
+      }
+
+      .navbar .navbar-extra a {
+        color: #fff;
+        margin: 0 0.5rem;
+      }
+
+      .navbar .navbar-extra a:hover {
+        color: var(--primary);
+      }
+      #Hamburger-menu {
+        display: none;
+      }
+      #searchBox {
+        position: absolute; /* Adjust positioning as needed */
+        background-color: white;
+        border: 1px solid #ccc;
+        padding: 10px;
+        z-index: 1000; /* Ensure it appears above other elements */
+      }
+      input[type="text"] {
+        width: 200px; /* Set appropriate width */
+      }
+      button {
+        margin-left: 5px; /* Spacing between input and button */
+      }
+      /*merek */
+      .mobil h2 span {
+        color: var(--primary);
+      }
+
+      .mobil {
+        padding: 8rem 7% 1.4rem;
+      }
+      .mobil p {
+        text-align: center;
+        max-width: 30rem;
+        margin: auto;
+        font-weight: 100;
+        line-height: 1.6;
+      }
+      .mobil .row {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 5rem;
+        justify-content: center;
+      }
+      .mobil .row .produk-card {
+        text-align: center;
+        padding-bottom: 4rem;
+      }
+      .mobil .row .produk-card img {
+        border-radius: 20%;
+        width: 80%;
+      }
+      .mobil .row .produk-card .produk-card-tittle {
+        margin: 1rem auto 0.5rem;
+      }
+      .mobil .row .buy-now {
+        background-color: #ff0000;
+        color: white;
+        padding: 12px 24px;
+        text-decoration: none;
+        border-radius: 10px;
+        font-size: 10px;
+        font-weight: bold;
+        margin: 1rem auto 0.5rem;
+        object-fit: cover;
+      }
+      .mobil .row .produk-card .produk-card-price {
+        margin: 1rem auto 0.5rem;
+      }
+      /*FOOTER */
+      footer {
+        background-color: var(--primary);
+        text-align: center;
+        padding: 1rem 0;
+        margin-top: 3rem;
+      }
+
+      footer .socials {
+        padding: 1rem 0;
+      }
+      footer .socials a {
+        color: #fff;
+        margin: 1rem;
+      }
+      footer .socials a:hover,
+      footer .links a:hover {
+        color: var(--background);
+      }
+      footer .links {
+        margin-bottom: 1.4rem;
+      }
+      footer .links a {
+        color: #fff;
+        padding: 0.7rem 1rem;
+      }
+      footer .credit {
+        font-size: 0.8rem;
+      }
+      footer .credit a {
+        color: var(--background);
+        font-weight: 700;
+      }
+      /*Queries */
+
+      /* Media Queries untuk Responsivitas */
+      @media (max-width: 768px) {
+        html {
+          font-size: 62.5%; /* Mengubah ukuran font untuk tablet */
+        }
+
+        #Hamburger-menu {
+          display: inline-block; /* Menampilkan menu hamburger */
+        }
+
+        .navbar .navbar-nav {
+          position: absolute;
+          top: 100%;
+          right: -100%;
+          background-color: #fff;
+          width: 30rem;
+          height: 100vh;
+          transition: 0.3s;
+        }
+
+        .navbar .navbar-nav.active {
+          right: 0; /* Menampilkan menu saat aktif */
+        }
+
+        .navbar .navbar-nav a {
+          color: var(--background);
+          display: block;
+          margin: 1.5rem;
+          padding: 0.5rem;
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 450px) {
+        html {
+          font-size: 55%; /* Mengubah ukuran font untuk mobile */
+        }
+
+        .hero .content h1 {
+          font-size: 3em; /* Mengurangi ukuran font untuk judul di mobile */
+        }
+
+        .hero .content p {
+          font-size: 1.4rem; /* Mengurangi ukuran font untuk paragraf di mobile */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!--navbar star-->
+    <nav class="navbar">
+      <a href="index.html" class="navbar-logo">ASTRA<span>VERO</span></a>
+
+      <div class="navbar-nav">
+        <a href="beranda.html">Home</a>
+        <a href="Tentang Kami.html">Tentang Kami</a>
+        <a href="daftar mobil.html">Mobil</a>
+        <a href="contact.html">Kontak</a>
+      </div>
+
+      <div class="navbar-extra">
+        <a href="#" id="search"><i data-feather="search"></i></a>
+        <a href="#" id="Shopping-cart"><i data-feather="shopping-cart"></i></a>
+        <a href="#" id="Hamburger-menu"><i data-feather="menu"></i></a>
+      </div>
+      <div id="searchBox" style="display: none">
+        <input type="text" id="searchInput" placeholder="Search..." />
+        <button onclick="performSearch()">Go</button>
+      </div>
+    </nav>
+    <!--navbar end-->
+    <!--menu section Star-->
+    <section id="mobil" class="mobil">
+      <div class="row">
+        <div class="produk-card">
+          <img
+            src="mobil/veneno01.jpg"
+            alt="Cream-Paket"
+            class="produk-card-img"
+          />
+          <h3 class="produk-card-tittle">VENENO</h3>
+          <p class="produk-card-price">USD 3.500.000</p>
+          <div class="overlay">
+            <a href="pembayaran.html" class="buy-now">Beli Sekarang</a>
+          </div>
+        </div>
+        <div class="produk-card">
+          <img
+            src="mobil/huracan.jpg"
+            alt="Cream-Paket"
+            class="produk-card-img"
+          />
+          <h3 class="produk-card-tittle">HURACAN</h3>
+          <p class="produk-card-price">USD 450.000</p>
+          <div class="overlay">
+            <a href="pembayaran.html" class="buy-now">Beli Sekarang</a>
+          </div>
+        </div>
+        <div class="produk-card">
+          <img
+            src="mobil/aventador.jpg"
+            alt="Cream-Paket"
+            class="produk-card-img"
+          />
+          <h3 class="produk-card-tittle">AVENTADOR</h3>
+          <p class="produk-card-price">USD 543.000</p>
+          <div class="overlay">
+            <a href="pembayaran.html" class="buy-now">Beli Sekarang</a>
+          </div>
+        </div>
+        <div class="produk-card">
+          <img
+            src="mobil/DIABLO.jpg"
+            alt="Cream-Paket"
+            class="produk-card-img"
+          />
+          <h3 class="produk-card-tittle">DIABLO</h3>
+          <p class="produk-card-price">USD 320.000</p>
+          <div class="overlay">
+            <a href="pembayaran.html" class="buy-now">Beli Sekarang</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--menu section End-->
+    <!--Footer start-->
+    <footer>
+      <div class="social">
+        <a
+          href="https://www.instagram.com/lamborghinileicester?igsh=bWVmaTVoNjZpOXp0"
+          ><i data-feather="instagram"></i
+        ></a>
+        <a href="https://www.facebook.com/share/1AftnHvF2K/"
+          ><i data-feather="facebook"></i
+        ></a>
+        <a href="https://x.com/Lamborghini?t=l-8oGu0t_ztnnXwl1ojKnQ&s=09"
+          ><i data-feather="twitter"></i
+        ></a>
+      </div>
+      <div class="links">
+        <a href="index.html">home</a>
+        <a href="Tentang Kami.html">Tentang Kami</a>
+        <a href="daftar mobil.html">mobil</a>
+        <a href="contact.html">kontak</a>
+      </div>
+      <div class="credit">
+        <p>
+          Created by
+          <a
+            href="https://mph.com/autos/results/lamborghini/revuelto-60742/filter:location=Beverly%20Hills,%20CA,%20USA?gad_source=1&gad_campaignid=22585563722&gbraid=0AAAAA9iIFlNJR6nb3l5fXwC-5abiXsjdw&gclid=Cj0KCQjwxdXBBhDEARIsAAUkP6jsXccfMq2MFGKb65oG-eJ_EFfAbT7c8gQyIJmpoL_l1jOTbxEa6xsaAhU_EALw_wcB"
+            >SALAM SATU HOBY</a
+          >
+          | &copy; Makassar, MEI 2025
+        </p>
+      </div>
+    </footer>
+    <!--Footer end-->
+    <!--fheater icons-->
+    <script>
+      feather.replace();
+    </script>
+    <!--My javascrip-->
+    <script src="js/script.js"></script>
+  </body>
+</html>
